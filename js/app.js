@@ -7,7 +7,7 @@ console.log('app js file is connected');
 // Global variables** 
 let storeSites = [];
 
-let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
+let storeHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 
 // let lastsiteIndex = 0;
 
@@ -20,13 +20,44 @@ let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '
     cookiesPerHour: [],
     customersPerHour: [],
     totalDailyCookies: 0,
-    getCookiesPerHour: function(){}
-    getCustPerHour: function(){}
-    render: function(){}
+    getCustPerHour: function(){
+      for(let i = 0; i < storeHours.length; i++ ){
+        this.customersPerHour.push(getRandomCustomersPerHour(this.minimumCustomers, this.maximumCustomers));
+      }
+    },
+    getCookiesPerHour: function(){
+      this.getCustPerHour();
+      for(let i = 0; i < storeHours.length; i++){
+        let cookPerHour = Math.ceil(this.customersPerHour[i] * this.averageCookiesPerSale);
+        this.cookiesPerHour.push(cookPerHour);
+        this.totalDailyCookies = this.totalDailyCookies + cookPerHour;
+      }
+    },
+    render: function(){
+      this.getCookiesPerHour();
+      //this is the ul
+      let unorderedList = document.getElementById('seattle');
+      console.log(unorderedList);
+    //   //now that we have a ul lets create some li's
+      for(let i = 0; i < storeHours.length; i++){
+      let listItem = document.createElement('li');
+      listItem.textContent = storeHours[i] + ': ' + this.cookiesPerHour[i] + ' cookies';
+  
+      unorderedList.appendChild(listItem);
+    }
+    let listTotal = document.createElement('li');
+    listTotal.textContent = 'Total Cookies: ' + this.totalDailyCookies;
+    unorderedList.appendChild(listTotal);
+  }
   };
 
+ seattle.render();
+ 
+ 
+console.log(seattle);
 
- storeSites.push(seattle);
+
+
 
 
   // let Tokyo = {
@@ -90,22 +121,22 @@ let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '
 // site.push(Lima);
 
 
-  // loop quicky through the site and log their info
-  doQuickDemo();
-  // Show on of the site on the index page
-  displayRandomSite();
+  // // loop quicky through the site and log their info
+  // doQuickDemo();
+  // // Show on of the site on the index page
+  // displayRandomSite();
 
 
 /**
  * Loop through the site and display their name and salesAverage
  */
-function doQuickDemo() {
-  for (let i = 0; i < site.length; i++) {
-    // site[i] is the current site object
-    let output = `The site called ${site[i].name} sells ${site[i].salesAverage} cookies per hour.`;
-    console.log(`Index ${i}: ${output}`);
-  }
-}
+// function doQuickDemo() {
+//   for (let i = 0; i < site.length; i++) {
+//     // site[i] is the current site object
+//     let output = `The site called ${site[i].name} sells ${site[i].salesAverage} cookies per hour.`;
+//     console.log(`Index ${i}: ${output}`);
+//   }
+// }
 
 /**
  * Derive an age in months as a random number. Get mimimum and maximum customers 
@@ -158,30 +189,30 @@ function getRandomCustomersPerHour(min, max) {
  *
  * @param {site} site - a site object
  * @returns {Element} - An HTML element containing site display data
- */
-function buildSiteDisplay(site) {
-  // Use the document object to create an artlicle element
-  let article = document.createElement("article");
-  let h2 = document.createElement("h2");
-  h2.innerText = site.name;
-  article.appendChild(h2);
-  // Add the age as a paragraph
-  let p = document.createElement("p");
-  p.innerText = `This kitten is ${kitten.age} months old.  It's interest are:`;
-  article.appendChild(p);
-  // list of interests
-  let ul = document.createElement("ul");
-  for (let i = 0; i < kitten.interests.length; i++) {
-    let li = document.createElement("li");
-    li.innerText = kitten.interests[i];
-    ul.appendChild(li);
-  }
-  article.appendChild(ul);
-  // image of the kitten
-  let img = document.createElement("img");
-  img.setAttribute("src", `images/${kitten.imageName}`);
-  img.setAttribute("alt", `An image of the kitten ${kitten.name}`);
-  article.appendChild(img);
-  // return the article
-  return article;
-}
+//  */
+// function buildSiteDisplay(site) {
+//   // Use the document object to create an artlicle element
+//   let article = document.createElement("article");
+//   let h2 = document.createElement("h2");
+//   h2.innerText = site.name;
+//   article.appendChild(h2);
+//   // Add the age as a paragraph
+//   let p = document.createElement("p");
+//   p.innerText = `This kitten is ${kitten.age} months old.  It's interest are:`;
+//   article.appendChild(p);
+//   // list of interests
+//   let ul = document.createElement("ul");
+//   for (let i = 0; i < kitten.interests.length; i++) {
+//     let li = document.createElement("li");
+//     li.innerText = kitten.interests[i];
+//     ul.appendChild(li);
+//   }
+//   article.appendChild(ul);
+//   // image of the kitten
+//   let img = document.createElement("img");
+//   img.setAttribute("src", `images/${kitten.imageName}`);
+//   img.setAttribute("alt", `An image of the kitten ${kitten.name}`);
+//   article.appendChild(img);
+//   // return the article
+//   return article;
+// }
