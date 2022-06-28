@@ -3,104 +3,98 @@
   @date 2022-06-27
 */
 "use strict";
-
+console.log('app js file is connected');
 // Global variables** 
-var site;
-var hours=['6am', `7am`, `8am`, `9am`, `10am`, `11am`, `12pm`, `1pm`, `2pm`, `3pm`, `4pm`, `5pm`, `6pm`, `7pm`, `8pm`];
-var lastsiteIndex = 0;
+let storeSites = [];
 
-/**
- * Initialize an array of kitten objects and draw the first one.// Initialize and array of site objects and draw first one
- */
-function initialize() {
-  console.log(`In initialize()`);
-  // initialzie the site data
-  site = [];
-  // Create a site object
-  let Seattle = { 
+let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
+
+// let lastsiteIndex = 0;
+
+  let seattle = { 
     name: "Seattle",
-    salesAverage: getRandomCustomersPerHour(6, 3),
-    imageName: "Seattle.jpeg",
-    interests: ["cuddling", "chasing string", "catnip"],
-    minimumCustomers: true,//mimimumCustomers: 23,
-    maximumCustomers: false,//maximumCustomers: 65,
-    averageCookiesPerSale: true,//averageCookiesPerSale: 6.3,
+    imageName: "seattle.jpeg",
+    minimumCustomers:  23,
+    maximumCustomers:  65,
+    averageCookiesPerSale:  6.3,
     cookiesPerHour: [],
     customersPerHour: [],
     totalDailyCookies: 0,
-    getsalesAverage: function () {
-      console.log(this.name);
-      console.log(this.salesAverage//salesAverage);
-    },
+    getCookiesPerHour: function(){}
+    getCustPerHour: function(){}
+    render: function(){}
   };
-  site.push(Seattle);
 
-  let Tokyo = {
-    name: "Tokyo",
-    salesAverage: getRandomCustomersPerHour(3, 12), //salesAversalesAverage: getAverageCookiesSale(1,2)
-    imageName: "Tokyo.jpeg",
-    interests: ["cuddling", "stalking", "catnip"],
-    isGoodWithKids: false, //mimimumCustomers: 3,
-    isGoodWithDogs: false, //maximumCustomers: 24,
-    isGoodWithOtherCats: true, //averageCookiesPerSale: 1.2,
-    getsalesAverage: function () {
-      console.log(this.name);
-      console.log(this.salesAverage);
-    },
-  };
-  site.push(Tokyo);
 
-  let Dubai = {
-    name: "Dubai",
-    salesAverage: getRandomCustomersPerHour(3, 12), //salesAversalesAverage: getAverageCookieSales(3,7)
-    imageName: "Dubai.jpeg",
-    interests: ["cuddling", "sleeping", "world domination"],
-    isGoodWithKids: false, //minimumCustomers: 11,
-    isGoodWithDogs: false, //maximumCustomers: 38
-    isGoodWithOtherCats: false, //averageCookiesPerSale: 3.7,
-    getsalesAverage: function () {
-      console.log(this.name);
-      console.log(this.salesAverage);
-    },
-  };
-  site.push(Dubai);
+ storeSites.push(seattle);
 
-  let Paris = {
-    name: "Paris",
-    salesAverage: getRandomCustomersPerHour(2,3)
-    imageName: "Paris.jpeg",
-    interests: ["cuddling", "sleeping", "world domination"],
-    minimumCustomers: 20,
-    maximumCustomers: 38,
-    //isGoodWithOtherCats: false, //averageCookiesPerSale: 3.7,
-    getsalesAverage: function () {
-      console.log(this.name);
-      console.log(this.salesAverage);
-    },
-  };
-  site.push(Paris);
 
-let Lima = {
-  name: "Lima",
-  salesAversalesAverage: getAverageCookieSales(4,6)
-  imageName : "Lima.jpeg",
-  interests: ["cuddling", "sleeping", "world domination"],
-  minimumCustomers: 2,
-  maximumCustomers : 16,
-   //isGoodWithOtherCats: false, //averageCookiesPerSale: 3.7,
-   getsalesAverage: function () {
-    console.log(this.name);
-    console.log(this.salesAverage);
-  },
-};
-site.push(Lima);
+  // let Tokyo = {
+  //   name: "Tokyo",
+  //   salesAverage: getRandomCustomersPerHour(3, 12), //salesAversalesAverage: getAverageCookiesSale(1,2)
+  //   imageName: "Tokyo.jpeg",
+  //   interests: ["cuddling", "stalking", "catnip"],
+  //   isGoodWithKids: false, //mimimumCustomers: 3,
+  //   isGoodWithDogs: false, //maximumCustomers: 24,
+  //   isGoodWithOtherCats: true, //averageCookiesPerSale: 1.2,
+  //   getsalesAverage: function () {
+  //     console.log(this.name);
+  //     console.log(this.salesAverage);
+  //   },
+  // };
+  // site.push(Tokyo);
+
+  // let Dubai = {
+  //   name: "Dubai",
+  //   salesAverage: getRandomCustomersPerHour(3, 12), //salesAversalesAverage: getAverageCookieSales(3,7)
+  //   imageName: "Dubai.jpeg",
+  //   interests: ["cuddling", "sleeping", "world domination"],
+  //   isGoodWithKids: false, //minimumCustomers: 11,
+  //   isGoodWithDogs: false, //maximumCustomers: 38
+  //   isGoodWithOtherCats: false, //averageCookiesPerSale: 3.7,
+  //   getsalesAverage: function () {
+  //     console.log(this.name);
+  //     console.log(this.salesAverage);
+  //   },
+  // };
+  // site.push(Dubai);
+
+  // let Paris = {
+  //   name: "Paris",
+  //   salesAverage: getRandomCustomersPerHour(2,3)
+  //   imageName: "Paris.jpeg",
+  //   interests: ["cuddling", "sleeping", "world domination"],
+  //   minimumCustomers: 20,
+  //   maximumCustomers: 38,
+  //   //isGoodWithOtherCats: false, //averageCookiesPerSale: 3.7,
+  //   getsalesAverage: function () {
+  //     console.log(this.name);
+  //     console.log(this.salesAverage);
+  //   },
+  // };
+  // site.push(Paris);
+
+// let Lima = {
+//   name: "Lima",
+//   salesAversalesAverage: getAverageCookieSales(4,6)
+//   imageName : "Lima.jpeg",
+//   interests: ["cuddling", "sleeping", "world domination"],
+//   minimumCustomers: 2,
+//   maximumCustomers : 16,
+//    //isGoodWithOtherCats: false, //averageCookiesPerSale: 3.7,
+//    getsalesAverage: function () {
+//     console.log(this.name);
+//     console.log(this.salesAverage);
+//   },
+// };
+// site.push(Lima);
 
 
   // loop quicky through the site and log their info
   doQuickDemo();
   // Show on of the site on the index page
   displayRandomSite();
-}
+
 
 /**
  * Loop through the site and display their name and salesAverage
@@ -124,42 +118,40 @@ function getRandomCustomersPerHour(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
-/**
- * Displays a randomly selected kitten on the page
- */
-function displayRandomSite() {
-  // Get a random index
-  let randomIndex = getRandomSiteIndex();
-  // Build an article with sub-elements for the site
-  let display = buildSiteDisplay(site[randomIndex]);
-  // get the div from the index page
-  let div = document.getElementById("SiteProfiles");
-  // clear the div and then add the article to the div
-  div.innerHTML = "";
-  div.appendChild(display);
-}
+
+// function displayRandomSite() {
+//   // Get a random index
+//   let randomIndex = getRandomSiteIndex();
+//   // Build an article with sub-elements for the site
+//   let display = buildSiteDisplay(site[randomIndex]);
+//   // get the div from the index page
+//   let div = document.getElementById("SiteProfiles");
+//   // clear the div and then add the article to the div
+//   div.innerHTML = "";
+//   div.appendChild(display);
+// }
 
 /**
  * Return a random index that is not the same as the previous index.
  *
  * @returns {number} - the index
  */
-function getRandomSiteIndex() {
-  let number = 0;
-  if (site.length > 1) {
-    // Only do this part if there is more than one kitten
-    let needed = true;
-    while (needed) {
-      let randomIndex = Math.floor(Math.random() * site.length);
-      if (randomIndex !== lastsiteIndexlastsiteIndex) {
-        number = randomIndex;
-        lastsiteIndexlastsiteIndex = number;
-        needed = false;
-      }
-    }
-  }
-  return number;
-}
+// function getRandomSiteIndex() {
+//   let number = 0;
+//   if (site.length > 1) {
+//     // Only do this part if there is more than one kitten
+//     let needed = true;
+//     while (needed) {
+//       let randomIndex = Math.floor(Math.random() * site.length);
+//       if (randomIndex !== lastsiteIndexlastsiteIndex) {
+//         number = randomIndex;
+//         lastsiteIndexlastsiteIndex = number;
+//         needed = false;
+//       }
+//     }
+//   }
+//   return number;
+// }
 
 /**
  * Builds the HTML to display a kitten
