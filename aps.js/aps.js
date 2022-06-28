@@ -15,7 +15,7 @@ var lastsiteIndex = 0;
 function initialize() {
   console.log(`In initialize()`);
   // initialzie the site data
-  site = []; // site = Seattle
+  site = [];
   // Create a site object
   let Seattle = { 
     name: "Seattle",
@@ -35,8 +35,8 @@ function initialize() {
   };
   site.push(Seattle);
 
-  let jumper = { //Tokyo = {
-    name: "Jumper", //"Tokyo",
+  let Tokyo = {
+    name: "Tokyo",
     salesAverage: getRandomCustomersPerHour(3, 12), //salesAversalesAverage: getAverageCookiesSale(1,2)
     imageName: "Tokyo.jpeg",
     interests: ["cuddling", "stalking", "catnip"],
@@ -48,10 +48,10 @@ function initialize() {
       console.log(this.salesAverage);
     },
   };
-  site.push(jumper);// site.push(Tokyo);
+  site.push(Tokyo);
 
-  let serena = {//Dubai = {
-    name: "Serena",// "Dubai",
+  let Dubai = {
+    name: "Dubai",
     salesAverage: getRandomCustomersPerHour(3, 12), //salesAversalesAverage: getAverageCookieSales(3,7)
     imageName: "Dubai.jpeg",
     interests: ["cuddling", "sleeping", "world domination"],
@@ -63,7 +63,7 @@ function initialize() {
       console.log(this.salesAverage);
     },
   };
-  site.push(serena);//site.push(Dubai);
+  site.push(Dubai);
 
   let Paris = {
     name: "Paris",
