@@ -121,22 +121,7 @@ console.log(seattle);
 // site.push(Lima);
 
 
-  // // loop quicky through the site and log their info
-  // doQuickDemo();
-  // // Show on of the site on the index page
-  // displayRandomSite();
 
-
-/**
- * Loop through the site and display their name and salesAverage
- */
-// function doQuickDemo() {
-//   for (let i = 0; i < site.length; i++) {
-//     // site[i] is the current site object
-//     let output = `The site called ${site[i].name} sells ${site[i].salesAverage} cookies per hour.`;
-//     console.log(`Index ${i}: ${output}`);
-//   }
-// }
 
 /**
  * Derive an age in months as a random number. Get mimimum and maximum customers 
@@ -150,69 +135,3 @@ function getRandomCustomersPerHour(min, max) {
 }
 
 
-// function displayRandomSite() {
-//   // Get a random index
-//   let randomIndex = getRandomSiteIndex();
-//   // Build an article with sub-elements for the site
-//   let display = buildSiteDisplay(site[randomIndex]);
-//   // get the div from the index page
-//   let div = document.getElementById("SiteProfiles");
-//   // clear the div and then add the article to the div
-//   div.innerHTML = "";
-//   div.appendChild(display);
-// }
-
-/**
- * Return a random index that is not the same as the previous index.
- *
- * @returns {number} - the index
- */
-// function getRandomSiteIndex() {
-//   let number = 0;
-//   if (site.length > 1) {
-//     // Only do this part if there is more than one kitten
-//     let needed = true;
-//     while (needed) {
-//       let randomIndex = Math.floor(Math.random() * site.length);
-//       if (randomIndex !== lastsiteIndexlastsiteIndex) {
-//         number = randomIndex;
-//         lastsiteIndexlastsiteIndex = number;
-//         needed = false;
-//       }
-//     }
-//   }
-//   return number;
-// }
-
-/**
- * Builds the HTML to display a kitten
- *
- * @param {site} site - a site object
- * @returns {Element} - An HTML element containing site display data
-//  */
-// function buildSiteDisplay(site) {
-//   // Use the document object to create an artlicle element
-//   let article = document.createElement("article");
-//   let h2 = document.createElement("h2");
-//   h2.innerText = site.name;
-//   article.appendChild(h2);
-//   // Add the age as a paragraph
-//   let p = document.createElement("p");
-//   p.innerText = `This kitten is ${kitten.age} months old.  It's interest are:`;
-//   article.appendChild(p);
-//   // list of interests
-//   let ul = document.createElement("ul");
-//   for (let i = 0; i < kitten.interests.length; i++) {
-//     let li = document.createElement("li");
-//     li.innerText = kitten.interests[i];
-//     ul.appendChild(li);
-//   }
-//   article.appendChild(ul);
-//   // image of the kitten
-//   let img = document.createElement("img");
-//   img.setAttribute("src", `images/${kitten.imageName}`);
-//   img.setAttribute("alt", `An image of the kitten ${kitten.name}`);
-//   article.appendChild(img);
-//   // return the article
-//   return article;
-// }
