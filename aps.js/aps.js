@@ -4,100 +4,136 @@
 */
 "use strict";
 
-// Global variables
-var kittens;
-var lastKittenIndex = 0;
+// Global variables** 
+var site;
+var hours=['6am', `7am`, `8am`, `9am`, `10am`, `11am`, `12pm`, `1pm`, `2pm`, `3pm`, `4pm`, `5pm`, `6pm`, `7pm`, `8pm`];
+var lastsiteIndex = 0;
 
 /**
- * Initialize an array of kitten objects and draw the first one.
+ * Initialize an array of kitten objects and draw the first one.// Initialize and array of site objects and draw first one
  */
 function initialize() {
   console.log(`In initialize()`);
-  // initialzie the kitten data - not usually done this way
-  kittens = [];
-  // Create a kitten object
-  let frankie = {
-    name: "Frankie",
-    age: getRandomAge(3, 12),
-    imageName: "frankie.jpeg",
+  // initialzie the site data
+  site = []; // site = Seattle
+  // Create a site object
+  let Seattle = { 
+    name: "Seattle",
+    salesAverage: getRandomCustomersPerHour(6, 3),
+    imageName: "Seattle.jpeg",
     interests: ["cuddling", "chasing string", "catnip"],
-    isGoodWithKids: true,
-    isGoodWithDogs: false,
-    isGoodWithOtherCats: true,
-    getAge: function () {
+    minimumCustomers: true,//mimimumCustomers: 23,
+    maximumCustomers: false,//maximumCustomers: 65,
+    averageCookiesPerSale: true,//averageCookiesPerSale: 6.3,
+    cookiesPerHour: [],
+    customersPerHour: [],
+    totalDailyCookies: 0,
+    getsalesAverage: function () {
       console.log(this.name);
-      console.log(this.age);
+      console.log(this.salesAverage//salesAverage);
     },
   };
-  kittens.push(frankie);
+  site.push(Seattle);
 
-  let jumper = {
-    name: "Jumper",
-    age: getRandomAge(3, 12),
-    imageName: "jumper.jpeg",
+  let jumper = { //Tokyo = {
+    name: "Jumper", //"Tokyo",
+    salesAverage: getRandomCustomersPerHour(3, 12), //salesAversalesAverage: getAverageCookiesSale(1,2)
+    imageName: "Tokyo.jpeg",
     interests: ["cuddling", "stalking", "catnip"],
-    isGoodWithKids: false,
-    isGoodWithDogs: false,
-    isGoodWithOtherCats: true,
-    getAge: function () {
+    isGoodWithKids: false, //mimimumCustomers: 3,
+    isGoodWithDogs: false, //maximumCustomers: 24,
+    isGoodWithOtherCats: true, //averageCookiesPerSale: 1.2,
+    getsalesAverage: function () {
       console.log(this.name);
-      console.log(this.age);
+      console.log(this.salesAverage);
     },
   };
-  kittens.push(jumper);
+  site.push(jumper);// site.push(Tokyo);
 
-  let serena = {
-    name: "Serena",
-    age: getRandomAge(3, 12),
-    imageName: "serena.jpeg",
+  let serena = {//Dubai = {
+    name: "Serena",// "Dubai",
+    salesAverage: getRandomCustomersPerHour(3, 12), //salesAversalesAverage: getAverageCookieSales(3,7)
+    imageName: "Dubai.jpeg",
     interests: ["cuddling", "sleeping", "world domination"],
-    isGoodWithKids: false,
-    isGoodWithDogs: false,
-    isGoodWithOtherCats: false,
-    getAge: function () {
+    isGoodWithKids: false, //minimumCustomers: 11,
+    isGoodWithDogs: false, //maximumCustomers: 38
+    isGoodWithOtherCats: false, //averageCookiesPerSale: 3.7,
+    getsalesAverage: function () {
       console.log(this.name);
-      console.log(this.age);
+      console.log(this.salesAverage);
     },
   };
-  kittens.push(serena);
-  // loop quicky through the kittens and log their info
+  site.push(serena);//site.push(Dubai);
+
+  let Paris = {
+    name: "Paris",
+    salesAverage: getRandomCustomersPerHour(2,3)
+    imageName: "Paris.jpeg",
+    interests: ["cuddling", "sleeping", "world domination"],
+    minimumCustomers: 20,
+    maximumCustomers: 38,
+    //isGoodWithOtherCats: false, //averageCookiesPerSale: 3.7,
+    getsalesAverage: function () {
+      console.log(this.name);
+      console.log(this.salesAverage);
+    },
+  };
+  site.push(Paris);
+
+let Lima = {
+  name: "Lima",
+  salesAversalesAverage: getAverageCookieSales(4,6)
+  imageName : "Lima.jpeg",
+  interests: ["cuddling", "sleeping", "world domination"],
+  minimumCustomers: 2,
+  maximumCustomers : 16,
+   //isGoodWithOtherCats: false, //averageCookiesPerSale: 3.7,
+   getsalesAverage: function () {
+    console.log(this.name);
+    console.log(this.salesAverage);
+  },
+};
+site.push(Lima);
+
+
+  // loop quicky through the site and log their info
   doQuickDemo();
-  // Show on of the kittens on the index page
-  displayRandomKitten();
+  // Show on of the site on the index page
+  displayRandomSite();
 }
 
 /**
- * Loop through the kittens and display their name and age
+ * Loop through the site and display their name and salesAverage
  */
 function doQuickDemo() {
-  for (let i = 0; i < kittens.length; i++) {
-    // kittens[i] is the current kitten object
-    let output = `The kitten called ${kittens[i].name} is ${kittens[i].age} months old.`;
+  for (let i = 0; i < site.length; i++) {
+    // site[i] is the current site object
+    let output = `The site called ${site[i].name} sells ${site[i].salesAverage} cookies per hour.`;
     console.log(`Index ${i}: ${output}`);
   }
 }
 
 /**
- * Derive an age in months as a random number.
+ * Derive an age in months as a random number. Get mimimum and maximum customers 
  *
- * @param {number } min - the minimum number of months
- * @param {number} max - the maximum number of months
- * @returns {number} - the random age in months
+ * @param {number } min - the minimum number of customers
+ * @param {number} max - the maximum number of customers
+ * @returns {number} - the random number of customers
  */
-function getRandomAge(min, max) {
+function getRandomCustomersPerHour(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
 }
 
 /**
  * Displays a randomly selected kitten on the page
  */
-function displayRandomKitten() {
+function displayRandomSite() {
   // Get a random index
-  let randomIndex = getRandomKittenIndex();
-  // Build an article with sub-elements for the kitten
-  let display = buildKittenDisplay(kittens[randomIndex]);
+  let randomIndex = getRandomSiteIndex();
+  // Build an article with sub-elements for the site
+  let display = buildSiteDisplay(site[randomIndex]);
   // get the div from the index page
-  let div = document.getElementById("kittenProfiles");
+  let div = document.getElementById("SiteProfiles");
   // clear the div and then add the article to the div
   div.innerHTML = "";
   div.appendChild(display);
@@ -108,16 +144,16 @@ function displayRandomKitten() {
  *
  * @returns {number} - the index
  */
-function getRandomKittenIndex() {
+function getRandomSiteIndex() {
   let number = 0;
-  if (kittens.length > 1) {
+  if (site.length > 1) {
     // Only do this part if there is more than one kitten
     let needed = true;
     while (needed) {
-      let randomIndex = Math.floor(Math.random() * kittens.length);
-      if (randomIndex !== lastKittenIndex) {
+      let randomIndex = Math.floor(Math.random() * site.length);
+      if (randomIndex !== lastsiteIndexlastsiteIndex) {
         number = randomIndex;
-        lastKittenIndex = number;
+        lastsiteIndexlastsiteIndex = number;
         needed = false;
       }
     }
@@ -128,14 +164,14 @@ function getRandomKittenIndex() {
 /**
  * Builds the HTML to display a kitten
  *
- * @param {kitten} kitten - a kitten object
- * @returns {Element} - An HTML element containing kitten display data
+ * @param {site} site - a site object
+ * @returns {Element} - An HTML element containing site display data
  */
-function buildKittenDisplay(kitten) {
+function buildSiteDisplay(site) {
   // Use the document object to create an artlicle element
   let article = document.createElement("article");
   let h2 = document.createElement("h2");
-  h2.innerText = kitten.name;
+  h2.innerText = site.name;
   article.appendChild(h2);
   // Add the age as a paragraph
   let p = document.createElement("p");
