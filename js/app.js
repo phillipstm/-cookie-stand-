@@ -1,15 +1,5 @@
-/*
-  FILE app.js
-  @date 2022-06-27
-*/
-
-
-
-
 "use strict";
 console.log('app js file is connected');
-
-
 
 // The header row and footer row are each created in their own stand-alone function
 
@@ -20,9 +10,7 @@ console.log('app js file is connected');
 // NOTE: Please use a header cell for both the header row ( containing store hours ),
 // and the footer row ( hourly and grand totals across all stores ).
 
-
 // Global variables** 
-CookieStore.storeSites = [];
 let storeHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 
 
@@ -38,15 +26,20 @@ this.numOfCookiesPerHour();
 CookieStore.storeSites.push(this);
 }
 
+CookieStore.storeSites = [];
 
-let seattle = new CookieStore(23,65,6.3,"Seattle");
-let tokyo = new CookieStore(3, 24,1.2,"Tokyo");
-let dubai = new CookieStore( 11, 38,3.7,"Dubai");
-let paris = new CookieStore( 20, 38,2.3,"Paris");
-let lima = new CookieStore(  2, 16,4.6,"Lima");
-  
+
   
 
+
+
+
+
+CookieStore.prototype.numOfCookiesPerHour = function(){
+  for(let i = 0; i < storeHours.length; i++){
+  this.cookiesSold[i] = Math.ceil(this.getRandomCustomersPerHour() * this.averageSales);
+  }
+};
 
 
 /**
@@ -56,8 +49,14 @@ let lima = new CookieStore(  2, 16,4.6,"Lima");
  * @param {number} max - the maximum number of customers
  * @returns {number} - the random number of customers
  */
-function getRandomCustomersPerHour(min, max) {
-  return Math.floor(Math.random() * (max - min) + min);
+CookieStore.prototype.getRandomCustomersPerHour = function() {
+  return Math.ceil(Math.random() * (this.maxCustomers - this.minCustomers) + this.minCustomers);
 }
 
 
+let seattle = new CookieStore(23,65,6.3,"Seattle");
+let tokyo = new CookieStore(3, 24,1.2,"Tokyo");
+let dubai = new CookieStore( 11, 38,3.7,"Dubai");
+let paris = new CookieStore( 20, 38,2.3,"Paris");
+let lima = new CookieStore(  2, 16,4.6,"Lima");
+  
