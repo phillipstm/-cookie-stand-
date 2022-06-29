@@ -1,4 +1,4 @@
-* {
+ {
   font-family: Arial, sans-serif;
 }
 
@@ -24,3 +24,16 @@ article img {
   width: 90%;
   margin: 0 auto;
 }
+ul {
+  list-style-type: none;
+}
+
+header li {
+  font-size: 25px;
+}
+
+main li {
+  font-weight: 800;
+  
+}
+
