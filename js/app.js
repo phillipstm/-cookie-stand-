@@ -12,7 +12,7 @@ console.log('app js file is connected');
 
 // Global variables** 
 let storeHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
-
+let cookiesTotalhour [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,];
 
 function CookieStore(minCustomers, maxCustomers, averageSales,locationName){
 this.minCustomers = minCustomers;
@@ -55,7 +55,7 @@ CookieStore.prototype.getRandomCustomersPerHour = function() {
 
 CookieStore.prototype.render = function() {
 let cookieTotal = 0;
-let tbody = document.getElementById(storData);
+let tbody = document.getElementById(storeData);
 let tr = document.createElement('tr');
 tbody.appendChild(tr);
 let tdLocationName = document.createElement('td');
@@ -63,17 +63,27 @@ tdLocationName.textContent = this.locationName;
 tr.appendChild(tdLocationName);
 
 for(let i = 0; i < storeHours.length; i++){
-  let numOfCookiesPerHour = this.cookiesSold[i];
-  let cookiesTotalhour[i] += cookiesForThisHour;
+  let cookiesForThisHour = this.cookiesSold[i];
+  cookiesTotalhour[i] += cookiesForThisHour;
   cookieTotal += cookiesForThisHour
+
+  let cookieHourlyData = document.createElement('td');
+  cookieHourlyData.textContent = cookiesForThisHour;
+  tr.appendChild(cookieHourlyData);
 }
+let cookieTotals = document.createElement('td');
+cookieTotals.textContent = cookieTotal;
+tr.appendChild(cookieTotals);
+};
 
+
+
+
+CookieStore.renderAll = function(){
+  for(let i = CookieStore.storeSites.length; i++){
+    CookieStore.storeSites[i].render();
+  }
 }
-
-
-
-
-
 
 
 
@@ -86,4 +96,8 @@ let tokyo = new CookieStore(3, 24,1.2,"Tokyo");
 let dubai = new CookieStore( 11, 38,3.7,"Dubai");
 let paris = new CookieStore( 20, 38,2.3,"Paris");
 let lima = new CookieStore(  2, 16,4.6,"Lima");
+
+
+
+CookieStore.renderAll();
   
