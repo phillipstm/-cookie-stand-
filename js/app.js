@@ -72,7 +72,7 @@ CookieStore.prototype.getRandomCustomersPerHour = function() {
 
 CookieStore.prototype.render = function() {
 let cookieTotal = 0;
-let tbody = document.getElementById(storeData);
+let tbody = document.getElementById("storeData");
 let tr = document.createElement('tr');
 tbody.appendChild(tr);
 let tdLocationName = document.createElement('td');
@@ -97,8 +97,8 @@ tr.appendChild(cookieTotals);
 
 
 CookieStore.renderAll = function(){
-  for(let i = 0; i < CookieStore.storeSites.length; i++);{
-    CookieStore.storeSites[i].render();
+  for(let i = 0; i < this.storeSites.length; i++) {
+   this.storeSites[i].render();
   }
   footerHourlyStoreTotals();
 }
