@@ -1,9 +1,11 @@
- {
+ *{
   font-family: Arial, sans-serif;
+  
 }
 
 body {
-  background-color: antiquewhite;
+  background-color: rgb(203, 209, 211);
+  color:navy;
   width: 90%;
   margin: 0 auto;
 }
