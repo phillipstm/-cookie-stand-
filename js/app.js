@@ -1,18 +1,40 @@
 "use strict";
 console.log('app js file is connected');
 
-// The header row and footer row are each created in their own stand-alone function
 
-// build a single table of data instead. 
-// complete each row with a “Daily Location Total”.
-// Each cookie stand location should have a separate render()
-// method that creates and appends its row to the table
-// NOTE: Please use a header cell for both the header row ( containing store hours ),
-// and the footer row ( hourly and grand totals across all stores ).
+//function to build footer data
+function footerHourlyStoreTotals(){
+  let cookieTotal = 0;
+  let tFoot = document.getElementById('tablefooter');
+  //tFoot.innerHTML = '';
+  let tr = document.createElement('tr');
+  tFoot.appendChild(tr);
+
+
+  let tdTitle = document.createElement('td');
+  tdTitle.textContent = 'Totals';
+  tr.appendChild(tdTitle);
+
+
+  for(let i = 0; i < cookiesTotalhour.length; i++){
+    let cookiesForThisHour = cookiesTotalhour[i];
+    cookieTotal += cookiesTotalhour;
+    let cookieHourlyTotals = document.createElement ('td');
+    cookieHourlyTotals.textContent = 'CookiesForThisHour';
+    tr.appendChild(cookieHourlyTotals);
+  }
+
+
+  let cookieTotals = document.createElement('td');
+  cookieTotals.textContent = 'cookieTotal';
+  tr.appendChild(cookieTotals);
+}
+
+
 
 // Global variables** 
 let storeHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
-let cookiesTotalhour [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,];
+let cookiesTotalhour = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,];
 
 function CookieStore(minCustomers, maxCustomers, averageSales,locationName){
 this.minCustomers = minCustomers;
@@ -27,11 +49,6 @@ CookieStore.storeSites.push(this);
 }
 
 CookieStore.storeSites = [];
-
-
-  
-
-
 
 
 
@@ -80,19 +97,16 @@ tr.appendChild(cookieTotals);
 
 
 CookieStore.renderAll = function(){
-  for(let i = CookieStore.storeSites.length; i++){
+  for(let i = 0; i < CookieStore.storeSites.length; i++);{
     CookieStore.storeSites[i].render();
   }
+  footerHourlyStoreTotals();
 }
 
 
 
-
-
-
-
-let seattle = new CookieStore(23,65,6.3,"Seattle");
-let tokyo = new CookieStore(3, 24,1.2,"Tokyo");
+let seattle = new CookieStore( 23,65,6.3,"Seattle");
+let tokyo = new CookieStore( 3, 24,1.2,"Tokyo");
 let dubai = new CookieStore( 11, 38,3.7,"Dubai");
 let paris = new CookieStore( 20, 38,2.3,"Paris");
 let lima = new CookieStore(  2, 16,4.6,"Lima");
