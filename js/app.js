@@ -53,6 +53,33 @@ CookieStore.prototype.getRandomCustomersPerHour = function() {
   return Math.ceil(Math.random() * (this.maxCustomers - this.minCustomers) + this.minCustomers);
 }
 
+CookieStore.prototype.render = function() {
+let cookieTotal = 0;
+let tbody = document.getElementById(storData);
+let tr = document.createElement('tr');
+tbody.appendChild(tr);
+let tdLocationName = document.createElement('td');
+tdLocationName.textContent = this.locationName;
+tr.appendChild(tdLocationName);
+
+for(let i = 0; i < storeHours.length; i++){
+  let numOfCookiesPerHour = this.cookiesSold[i];
+  let cookiesTotalhour[i] += cookiesForThisHour;
+  cookieTotal += cookiesForThisHour
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
 
 let seattle = new CookieStore(23,65,6.3,"Seattle");
 let tokyo = new CookieStore(3, 24,1.2,"Tokyo");
