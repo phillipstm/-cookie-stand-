@@ -1,6 +1,6 @@
 "use strict";
 console.log('app js file is connected');
-
+//debugger;
 
 //function to build footer data
 function footerHourlyStoreTotals(){
@@ -103,14 +103,15 @@ CookieStore.renderAll = function(){
   footerHourlyStoreTotals();
 }
 
-
+/**
+ * not in a function
+ */
 
 let seattle = new CookieStore( 23,65,6.3,"Seattle");
 let tokyo = new CookieStore( 3, 24,1.2,"Tokyo");
 let dubai = new CookieStore( 11, 38,3.7,"Dubai");
 let paris = new CookieStore( 20, 38,2.3,"Paris");
 let lima = new CookieStore(  2, 16,4.6,"Lima");
-
 
 
 CookieStore.renderAll();
