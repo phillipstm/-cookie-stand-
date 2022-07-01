@@ -9,18 +9,6 @@
   <link href="css/style.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
-  <form action="http://www.example.com" method="get"></form>
-    <fieldset>
-      <legend>
-        New Store Information:
-      </legend>
-      <label>
-        Store Site City
-        <input type="text" storeSites="location" 
-          required="required" /><br />
-        <label>Store Address</label>
-      </label>
-    </fieldset>
   <nav>
   <ul>
     <li><a href="index.html">Home</a></li>
@@ -28,6 +16,29 @@
     <l1><a href="storeSetup.html"></a></l1>
   </ul>
   </nav>
+  <form action="http://www.example.com" method="get"></form>
+  <fieldset>
+    <legend>
+      New Store Information:
+    </legend>
+    <label> Store Site City:<br />
+      <input type="text" storeSites="location" 
+        required="required" /></label><br />
+    <label>Street Address:<br />
+      <input type="text" storeSites="address" 
+        required="required" /></label><br />
+    <label>Phone Number:<br />
+      <input type="text" storeSites="phoneNumber" 
+        required="required" /></label><br />
+    <label>Email:<br />
+      <input type="text" storeSites="email" 
+        required="required" /></label><br />
+    <label>Hours of Operation:<br />
+      <input type="text" storeSites="storeHours" 
+        required="required" /></label><br />
+    <input type="submit" value="SubmitForm" />
+  </fieldset>
+
   <script src="js/app.js"></script>
 </body>
 </html>
