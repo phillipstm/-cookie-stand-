@@ -79,6 +79,10 @@ let tdLocationName = document.createElement('td');
 tdLocationName.textContent = this.locationName;
 tr.appendChild(tdLocationName);
 
+
+
+
+
 for(let i = 0; i < storeHours.length; i++){
   let cookiesForThisHour = this.cookiesSold[i];
   cookiesTotalhour[i] += cookiesForThisHour;
